@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Happy Birth Day</title>
+
+		<style type="text/css">
+			@import 'https://fonts.googleapis.com/css?family=Roboto';
+html, body {
+	background-color: #000;
+}
+pre{
+  color: white;
+  margin-left: 30%;
+}
+h2, a, p {
+	color: #fff;
+	font-family: Roboto;
+	text-decoration: none;
+}
+p > a {
+	color: #fd084a;
+}
+.blink {
+  animation: blink 0.5s infinite;
+}
+@keyframes blink{
+  to { opacity: .0; }
+}
+.flex {
+	display: flex;
+}
+.header-sub-title {
+  color: #fff;
+  font-family: "Courier";
+  font-size: 20px;
+  padding: 0.1em;
+}
+		</style>
+	</head>
+	<body>
+		<div class="flex">
+	<p class="header-sub-title" id="word"></p><p class="header-sub-title blink">|</p>
+</div>
+
+		<script type="text/javascript">
+			const words = ["Hallo, Revita!", "Semangat yaa kerjanya!", "CARI DUIT BIAR KAYA!!", "JANGAN LUPA CARI JODOH, LU UDAH TUA SOALNYA!", "Btw, I LOVE YOU MY Best-Friend!"];
+let i = 0;
+let timer;
+function typingEffect() {
+	let word = words[i].split("");
+	var loopTyping = function() {
+		if (word.length > 0) {
+			document.getElementById('word').innerHTML += word.shift();
+		} else {
+			deletingEffect();
+			return false;
+		};
+		timer = setTimeout(loopTyping, 100);
+	};
+	loopTyping();
+};
+function deletingEffect() {
+	let word = words[i].split("");
+	var loopDeleting = function() {
+		if (word.length > 0) {
+			word.pop();
+			document.getElementById('word').innerHTML = word.join("");
+		} else {
+			if (words.length > (i + 1)) {
+				i++;
+			} else {
+				i = 0;
+			};
+			typingEffect();
+			return false;
+		};
+		timer = setTimeout(loopDeleting, 50);
+	};
+	loopDeleting();
+};
+typingEffect();
+		</script>
+
+	</body>
+</html>
